@@ -1,12 +1,4 @@
 services:
-  #loki:
-  #  image: grafana/loki:latest
-  #  container_name: loki
-  #  ports:
-  #    - "3100:3100"
-  #  volumes:
-  #    - ./loki-config.yaml:/etc/loki/local-config.yaml
-
   gnmic:
     image: ghcr.io/openconfig/gnmic:latest
     container_name: gnmic
@@ -34,13 +26,9 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
-      #- ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
-      #- ./grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
-      #- ./grafana/dashboards.yaml:/etc/grafana/provisioning/dashboards/json/dashboards.yaml
       - ./grafana/provisioning:/etc/grafana/provisioning/
       - grafanadata:/var/lib/grafana
 
 volumes:
   grafanadata:
   prometheusdata:
-  #gnmic:
